@@ -9,5 +9,9 @@
             android:layout_height="wrap_content"
             android:text="Hello World, MainActivity"
             />
+    <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/lstTickets" android:layout_gravity="center"/>
 </LinearLayout>
 

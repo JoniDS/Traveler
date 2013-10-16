@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Traveler</string>
+    <string name="mi_order">Order</string>
+    <string name="mi_shuffle">Shuffle</string>
+    <string name="msg_ordering">Sorting tickeks</string>
+    <string name="msg_shuffling">Shuffling tickeks</string>
 </resources>

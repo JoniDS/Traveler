@@ -1,0 +1,42 @@
+[
+    {
+        "type": 2,
+        "from": "Madrid",
+        "to": "Barcelona",
+        "hasAssignedSeats": true,
+        "seatAssignment": "78B",
+        "hasTransportName": true,
+        "transportName": "78A"
+    },
+    {
+        "type": 3,
+        "from": "Barcelona",
+        "to": "Gerona"
+    },
+    {
+        "type": 2,
+        "from": "Gerona",
+        "to": "London",
+        "hasGate": "true",
+        "gateNumber": "45B",
+        "baggageTransferred": true,
+        "hasBaggageDrop": true,
+        "baggageCounter": "344",
+        "hasAssignedSeats": true,
+        "seatAssignment": "3A",
+        "hasTransportName": true,
+        "transportName": "SK 455"
+    },
+    {
+        "type": 2,
+        "from": "London",
+        "to": "New York JFK",
+        "hasGate": "true",
+        "gateNumber": "22",
+        "baggageTransferred": true,
+        "hasAssignedSeats": true,
+        "seatAssignment": "7B",
+        "hasTransportName": true,
+        "transportName": "SK 22"
+    }
+]
