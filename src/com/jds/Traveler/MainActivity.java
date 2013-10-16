@@ -6,6 +6,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.jds.Traveler.adapters.TicketAdapter;
@@ -20,22 +24,43 @@ public class MainActivity extends ActionBarActivity {
     private Ticket[] tickets;
     private TicketAdapter tAdapter;
     private ListView lstTickets;
+    private LinearLayout pb;
+    private Button btnOrder, btnShuffle;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar();
+        //getSupportActionBar();
         lstTickets = (ListView) findViewById(R.id.lstTickets);
+        pb = (LinearLayout) findViewById(R.id.pb);
+        btnOrder = (Button) findViewById(R.id.btn_order);
+        btnShuffle = (Button) findViewById(R.id.btn_shuffle);
+
         tAdapter = new TicketAdapter(this);
         lstTickets.setAdapter(tAdapter);
 
         loadTickets();
+
+        btnOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               orderTickets();
+            }
+        });
+        btnShuffle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                shuffleTickets();
+            }
+        });
     }
 
 
     private void loadTickets(){
         //Cancel task if is running
+        setSupportProgressBarIndeterminateVisibility(true);
         if(tTickets != null)
             tTickets.cancel(true);
         tTickets = new LoadTicketsTask(this);
@@ -55,6 +80,7 @@ public class MainActivity extends ActionBarActivity {
                     }
                     tAdapter.notifyDataSetChanged();
                 }
+                setSupportProgressBarIndeterminateVisibility(false);
             }
         });
         tTickets.execute();
@@ -74,14 +100,24 @@ public class MainActivity extends ActionBarActivity {
         switch(item.getItemId())
         {
             case R.id.mi_order:
-                tAdapter.orderTickets();
-                Toast.makeText(this, getString(R.string.msg_ordering), Toast.LENGTH_SHORT).show();
+                orderTickets();
                 return true;
             case R.id.mi_shuffle:
-                tAdapter.shuffleTickets();
-                Toast.makeText(this, getString(R.string.msg_shuffling), Toast.LENGTH_SHORT).show();
+                shuffleTickets();
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void shuffleTickets() {
+        tAdapter.shuffleTickets();
+        Toast.makeText(this, getString(R.string.msg_shuffling), Toast.LENGTH_SHORT).show();
+    }
+
+    private void orderTickets() {
+        pb.setVisibility(View.VISIBLE);
+        tAdapter.orderTickets();
+        Toast.makeText(this, getString(R.string.msg_ordering), Toast.LENGTH_SHORT).show();
+        pb.setVisibility(View.GONE);
     }
 }

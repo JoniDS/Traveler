@@ -14,12 +14,11 @@
         "to": "Gerona"
     },
     {
-        "type": 2,
+        "type": 1,
         "from": "Gerona",
         "to": "London",
         "hasGate": "true",
         "gateNumber": "45B",
-        "baggageTransferred": true,
         "hasBaggageDrop": true,
         "baggageCounter": "344",
         "hasAssignedSeats": true,
@@ -28,7 +27,7 @@
         "transportName": "SK 455"
     },
     {
-        "type": 2,
+        "type": 1,
         "from": "London",
         "to": "New York JFK",
         "hasGate": "true",

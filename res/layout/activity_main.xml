@@ -4,14 +4,37 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
         >
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello World, MainActivity"
-            />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/pb"
+            android:visibility="gone"
+            >
+        <ProgressBar android:layout_width="wrap_content"
+                     android:layout_height="wrap_content">
+
+        </ProgressBar>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
+                  android:padding="5dp"
+            >
+        <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/mi_shuffle"
+                android:drawableLeft="@drawable/ic_action_shuffle" android:id="@+id/btn_shuffle"></Button>
+        <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_marginLeft="5dp"
+                android:drawableLeft="@drawable/ic_action_sort" android:id="@+id/btn_order" android:text="@string/mi_order"></Button>
+    </LinearLayout>
     <ListView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="fill_parent"
+            android:padding="15dp"
+            android:dividerHeight="5dp"
+            android:divider="@null"
+            android:drawSelectorOnTop="false"
+            android:listSelector="@drawable/list_item_frame"
+            android:background="@color/lightGrey2"
             android:id="@+id/lstTickets" android:layout_gravity="center"/>
 </LinearLayout>
 

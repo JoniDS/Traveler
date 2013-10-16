@@ -5,4 +5,16 @@
     <string name="mi_shuffle">Shuffle</string>
     <string name="msg_ordering">Sorting tickeks</string>
     <string name="msg_shuffling">Shuffling tickeks</string>
+    <string name="lbl_take">Take</string>
+    <string name="lbl_from">From</string>
+    <string name="lbl_take">Take</string>
+    <string name="lbl_baggage">Baggage will we  automatically transferred from your last leg.</string>
+    <string name="lbl_counter" formatted="false">Baggage  drop at ticket counter %s.</string>
+    <string name="lbl_train">train</string>
+    <string name="lbl_flight">flight</string>
+    <string name="lbl_bus">bus</string>
+    <string name="lbl_to">to</string>
+    <string name="lbl_seat" formatted="false">Sit in seat %s</string>
+    <string name="lbl_noseat">No seat assignment</string>
+    <string name="lbl_gate" formatted="false">Gate %s</string>
 </resources>

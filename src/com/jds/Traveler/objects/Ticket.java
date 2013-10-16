@@ -17,7 +17,7 @@ public class Ticket {
     //Trip destination
     private String to;
     //Type of
-    private String type;
+    private int type;
     //If baggage will be dropped at the end of the trip
     private boolean hasBaggageDrop;
     private String baggageCounter;
@@ -29,7 +29,7 @@ public class Ticket {
     private String gateNumber;
     private boolean hasTransportName;
     private String transportName;
-    private Boolean baggageTransferred;
+    private boolean baggageTransferred;
 
 
     public String getFrom() {
@@ -48,11 +48,11 @@ public class Ticket {
         this.to = to;
     }
 
-    public String getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 

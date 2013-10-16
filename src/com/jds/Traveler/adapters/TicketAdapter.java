@@ -81,8 +81,8 @@ public class TicketAdapter extends BaseAdapter {
                     Context.LAYOUT_INFLATER_SERVICE);
             convertView = vi.inflate(R.layout.partial_item_layout, null);
             holder = new ViewHolder();
-            holder.lblFrom = (TextView) convertView.findViewById(R.id.lblFrom);
-            holder.lblTo = (TextView) convertView.findViewById(R.id.lblTo);
+
+            holder.lblDesc = (TextView) convertView.findViewById(R.id.lblDesc);
 
             convertView.setTag(holder);
 
@@ -94,8 +94,31 @@ public class TicketAdapter extends BaseAdapter {
 
         if (o != null) {
 
-            holder.lblFrom.setText(o.getFrom());
-            holder.lblTo.setText(o.getTo());
+            String text="";
+            switch(o.getType())
+            {   case 1:
+                text = ctx.getString(R.string.lbl_from)+" "+o.getFrom() +" "+ctx.getString(R.string.lbl_take)+" "+ ctx.getString(R.string.lbl_flight)+" "+
+                        (o.isHasTransportName() ? o.getTransportName() : "")+" "+ctx.getString(R.string.lbl_to)+" "+ o.getTo()+". "
+                        + String.format(ctx.getString(R.string.lbl_gate), o.getGateNumber())+", "+
+                        (o.isHasAssignedSeats() ? String.format(ctx.getString(R.string.lbl_seat), o.getSeatAssignment())+"." : ".") +
+                        (o.isHasBaggageDrop() ? String.format(ctx.getString(R.string.lbl_counter), o.getBaggageCounter())+".": ".")+
+                        (o.getBaggageTransferred() ? ctx.getString(R.string.lbl_baggage) : "");
+                break;
+
+                case 2: text = ctx.getString(R.string.lbl_take)+" "+ ctx.getString(R.string.lbl_train)+" "+o.getTransportName()+" "+
+                        ctx.getString(R.string.lbl_from)+" "+ o.getFrom()+" " + ctx.getString(R.string.lbl_to)+" "+o.getTo()+"."+
+                        (o.isHasAssignedSeats() ? String.format(ctx.getString(R.string.lbl_seat), o.getSeatAssignment())+".": ".");
+                    break;
+                case 3:
+                    text = ctx.getString(R.string.lbl_take)+" "+ ctx.getString(R.string.lbl_bus)+" "+
+                            ctx.getString(R.string.lbl_from)+" "+ o.getFrom()+" " + ctx.getString(R.string.lbl_to)+" "+o.getTo()+"."+
+                            (o.isHasAssignedSeats() ? String.format(ctx.getString(R.string.lbl_seat), o.getSeatAssignment())+".": ctx.getString(R.string.lbl_noseat)+".");
+                    break;
+
+            }
+
+            holder.lblDesc.setText(text);
+
         }
 
         return convertView;
@@ -105,7 +128,6 @@ public class TicketAdapter extends BaseAdapter {
      * This function will sort the tickets     *
      */
     public void orderTickets() {
-        HashMap<String, Integer> keys = new HashMap<String, Integer>();
         ArrayList<Ticket> sortedList = new ArrayList<Ticket>();
 
         Ticket last = null;
@@ -131,18 +153,6 @@ public class TicketAdapter extends BaseAdapter {
         setTickets(sortedList);
 
         notifyDataSetChanged();
-
-        /*Collections.sort(tickets, new Comparator<Ticket>() {
-            public int compare(Ticket a, Ticket b) {
-                if (a.getTo().equals(b.getFrom()))
-                    return -11;
-                else if(a.getFrom().equals(b.getFrom()))
-                    return 0;
-                else return 1;
-
-            }
-        });*/
-        notifyDataSetChanged();
     }
 
     /**
@@ -158,7 +168,7 @@ public class TicketAdapter extends BaseAdapter {
      * To reuse views instead of always regenerating
      */
     class ViewHolder {
-        TextView lblFrom, lblTo;
+        TextView lblDesc;
     }
 
 }

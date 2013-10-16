@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="main_color">#E04142</color>
+    <color name="main_color_soft">#FFFEE4</color>
+    <color name="grey">#413D3D</color>
+    <color name="white">#FFFFFF</color>
+    <color name="lightGrey">#E5E5E5</color>
+    <color name="lightGrey2">#D5D5D5</color>
+    <color name="lightRed">#FFD8D8</color>
+    <color name="lightRed2">#F5A2A2</color>
+    <color name="strongRed">#A30006</color>
+</resources>
